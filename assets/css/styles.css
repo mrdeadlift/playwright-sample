@@ -1,0 +1,21 @@
+/* Basic layout helpers */
+html, body { height: 100%; }
+
+.list-group-item.active {
+  border-color: var(--bs-primary);
+}
+
+.table thead th {
+  white-space: nowrap;
+}
+
+/* Card shadows for a bit of depth */
+.card {
+  border-radius: .5rem;
+}
+
+/* Utility: reduce default container padding on small screens */
+@media (max-width: 576px) {
+  main .container, .container-fluid { padding-left: .75rem; padding-right: .75rem; }
+}
+
