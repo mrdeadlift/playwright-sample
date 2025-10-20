@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>管理ユーザー編集 | Management Sample</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary" th:replace="fragments/header :: header('管理ユーザー編集')">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-semibold" href="index.html">Management Sample</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <span class="navbar-text text-light ms-2">管理ユーザー編集</span>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <span class="text-light small">ログイン中: <strong>demo@example.com</strong></span>
+          <a class="btn btn-sm btn-outline-light" href="login.html">ログアウト</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid flex-grow-1">
+    <div class="row">
+      <div class="col-12 col-md-3 col-lg-2 p-0 border-end" style="min-height: 70vh;">
+        <!-- 管理ユーザーのメニューを展開した状態にする -->
+        <aside class="bg-light border-end h-100" th:replace="fragments/sidebar :: sidebar('admin-detail')">
+          <div class="list-group list-group-flush rounded-0">
+            <a class="list-group-item list-group-item-action" href="index.html">TOP</a>
+          </div>
+        </aside>
+      </div>
+      <main class="col-12 col-md-9 col-lg-10 p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h1 class="h4 mb-0">管理ユーザー編集（サンプル）</h1>
+          <div class="d-flex gap-2">
+            <a class="btn btn-outline-secondary" href="admin-user-detail.html">詳細へ</a>
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#confirmSaveModal">保存</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <form class="row g-3">
+              <div class="col-12 col-md-4">
+                <label class="form-label" for="au-e-userid">ユーザーID</label>
+                <input class="form-control" id="au-e-userid" name="userId" value="admin01" readonly>
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="form-label" for="au-e-name">氏名</label>
+                <input class="form-control" id="au-e-name" name="name" value="管理 太郎">
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="form-label" for="au-e-email">メール</label>
+                <input type="email" class="form-control" id="au-e-email" name="email" value="admin01@example.com">
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="form-label" for="au-e-role">権限</label>
+                <select class="form-select" id="au-e-role" name="role">
+                  <option selected>ADMIN</option>
+                  <option>MANAGER</option>
+                  <option>OPERATOR</option>
+                </select>
+              </div>
+              <div class="col-12 d-flex justify-content-end gap-2 mt-2">
+                <button type="reset" class="btn btn-outline-secondary">クリア</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmSaveModal">保存</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <footer class="bg-light border-top py-3" th:replace="fragments/footer :: footer">
+    <div class="container-fluid text-center small text-muted">
+      &copy; 2025 Management Sample
+    </div>
+  </footer>
+
+  <!-- 保存確認モーダル -->
+  <div class="modal fade" id="confirmSaveModal" tabindex="-1" aria-labelledby="confirmSaveLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmSaveLabel">確認</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+        </div>
+        <div class="modal-body">
+          保存してよろしいですか？
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+          <a href="admin-user-detail.html" class="btn btn-primary">保存する</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
